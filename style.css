@@ -1,0 +1,298 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0D0D0D;
+  --text: #FFFFFF;
+  --accent: #E50914;
+  --accent-hover: #FF1E27;
+  --card-bg: #1A1A1A;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+#app {
+  height: 100%;
+  padding: calc(env(safe-area-inset-top) + 20px) 20px calc(env(safe-area-inset-bottom) + 20px);
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.screen.active {
+  display: flex;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  color: var(--accent);
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.control-group {
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 25px;
+}
+
+.control-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.stepper button {
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.stepper button:active {
+  background: var(--accent);
+  color: var(--text);
+}
+
+.stepper span {
+  font-size: 1.8rem;
+  font-weight: 700;
+  min-width: 40px;
+}
+
+select {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  background: var(--card-bg);
+  color: var(--text);
+  border: 2px solid #333;
+  border-radius: 12px;
+  appearance: none;
+  -webkit-appearance: none;
+  text-align: center;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+button.primary {
+  width: 100%;
+  max-width: 280px;
+  padding: 18px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: var(--accent);
+  color: var(--text);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.2s ease;
+}
+
+button.primary:active {
+  background: var(--accent-hover);
+}
+
+button.danger {
+  width: 100%;
+  max-width: 280px;
+  padding: 18px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.2s ease;
+}
+
+button.danger:active {
+  background: var(--accent);
+  color: var(--text);
+}
+
+.hidden {
+  display: none !important;
+}
+
+footer {
+  margin-top: auto;
+  padding-top: 30px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:active {
+  opacity: 0.7;
+}
+
+/* Flashcard */
+#flashcards {
+  perspective: 1000px;
+}
+
+.card {
+  width: 100%;
+  max-width: 320px;
+  height: 400px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  border: 3px solid #333;
+}
+
+.card-front {
+  background: var(--card-bg);
+}
+
+.card-back {
+  background: var(--card-bg);
+  transform: rotateY(180deg);
+  border-color: var(--accent);
+}
+
+#player-label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #888;
+}
+
+#card-front.tap-hint {
+  border-color: var(--accent);
+}
+
+#card-front.tap-hint::after {
+  content: 'Tap to reveal';
+  position: absolute;
+  bottom: 40px;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.card-content {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.card-category {
+  font-size: 1rem;
+  color: #888;
+  margin-top: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.spy-text {
+  color: var(--accent);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+/* In-Game Screen */
+#round-info {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+#timer {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 20px 0;
+}
+
+#reveal-result {
+  margin-top: 30px;
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+  width: 100%;
+  max-width: 320px;
+}
+
+#reveal-result h3 {
+  color: var(--accent);
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+#reveal-result p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+#reveal-result .spy-players {
+  font-weight: 700;
+  color: var(--accent);
+}

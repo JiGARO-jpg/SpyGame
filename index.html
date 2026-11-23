@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Spy Party</title>
+</head>
+<body>
+  <div id="app">
+    <!-- Setup Screen -->
+    <section id="setup" class="screen active">
+      <h1>Spy Party</h1>
+      <div class="control-group">
+        <label>Total Players</label>
+        <div class="stepper">
+          <button id="players-dec">-</button>
+          <span id="players-count">5</span>
+          <button id="players-inc">+</button>
+        </div>
+      </div>
+      <div class="control-group">
+        <label>Spies</label>
+        <div class="stepper">
+          <button id="spies-dec">-</button>
+          <span id="spies-count">1</span>
+          <button id="spies-inc">+</button>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="category-select">Category</label>
+        <select id="category-select">
+          <option value="all">All Categories</option>
+          <option value="places">Places</option>
+          <option value="items">Everyday Items</option>
+          <option value="professions">Professions</option>
+          <option value="food">Food & Drink</option>
+        </select>
+      </div>
+      <button id="start-btn" class="primary">Start Game</button>
+      <footer>
+        Made by JiGARO — <a href="https://instagram.com/georgejigaro" target="_blank" rel="noopener">@georgejigaro</a>
+      </footer>
+    </section>
+
+    <!-- Flashcard Screen -->
+    <section id="flashcards" class="screen">
+      <div class="card" id="card">
+        <div class="card-face card-front" id="card-front">
+          <span id="player-label"></span>
+        </div>
+        <div class="card-face card-back" id="card-back"></div>
+      </div>
+    </section>
+
+    <!-- In‑Game Screen -->
+    <section id="game" class="screen">
+      <h2>Round in progress</h2>
+      <p id="round-info"></p>
+      <button id="reveal-btn" class="danger">Reveal Spy / End Round</button>
+      <button id="play-again-btn" class="primary hidden">Play Again</button>
+      <div id="reveal-result" class="hidden"></div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
