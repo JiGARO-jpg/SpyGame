@@ -149,6 +149,10 @@ card.addEventListener('click', () => {
     card.classList.add('flipped');
   } else {
     // Second tap: hide card and advance
+    // CRITICAL: Clear old content BEFORE starting the flip transition,
+    // so there's no leftover "YOU ARE SPY" or word visible during the animation.
+    cardBack.innerHTML = '';
+
     card.classList.remove('flipped');
     isFlipped = false;
 
